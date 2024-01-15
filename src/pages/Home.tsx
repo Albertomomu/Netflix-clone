@@ -1,4 +1,3 @@
-import React from 'react'
 import Hero from '../components/Hero'
 import MovieRow from '../components/MovieRow'
 import ENDPOINTS from '../services/movieServices'

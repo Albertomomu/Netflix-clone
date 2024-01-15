@@ -1,10 +1,10 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ENDPOINTS, { createImageUrl } from '../services/movieServices'
 
 const Hero = () => {
 
-  const [movie, setMovie] = useState({})
+  const [movie, setMovie] = useState<{ title: string, backdrop_path: string, release_date: string, overview: string }>({ title: '', backdrop_path: '', release_date: '', overview: '' })
 
   useEffect(() => {
     axios.get(ENDPOINTS.popular).then((resp) => {

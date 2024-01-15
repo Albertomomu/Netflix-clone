@@ -1,9 +1,9 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import MovieItem from './MovieItem'
 
-const MovieRow = ({ title, url }) => {
-  const [movies, setMovies] = useState([])
+const MovieRow = ({ title, url }: { title: string, url: string }) => {
+  const [movies, setMovies] = useState<{ id: number, title: string, url: string, backdrop_path: string, poster_path: string, release_date: string, vote_average: number, overview: string, genre_ids: number[] }[]>([])
 
   useEffect(() => {
     axios.get(url).then((response) => setMovies(response.data.results))

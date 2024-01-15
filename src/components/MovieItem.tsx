@@ -1,7 +1,12 @@
-import React from 'react'
 import { createImageUrl } from '../services/movieServices'
 
-const MovieItem = ({ movie }) => {
+interface Movie {
+  title: string;
+  backdrop_path: string;
+  poster_path: string;
+}
+
+const MovieItem: React.FC<{ movie: Movie }> = ({ movie }) => {
   const { title, backdrop_path, poster_path } = movie
   return (
     <div className='relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block rounded-lg overflow-hidden cursor-pointer m-2'>
