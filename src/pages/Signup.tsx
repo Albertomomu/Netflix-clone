@@ -1,14 +1,23 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { UserAuth } from "../context/AuthContext"
 
 const Signup = () => {
   const [rememberLogin, setRememberLogin] = useState(true)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleForm = (e: Event) => {
+  const { user, signUp } = UserAuth();
+  const navigate = useNavigate()
+
+  const handleForm = async (e: Event) => {
     e.preventDefault()
-    console.log(email, password)
+    try {
+      await signUp(email, password)
+      navigate('/')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
