@@ -23,12 +23,12 @@ const Login = () => {
               <form onSubmit={handleForm} className="w-full flex flex-col gap-3">
                 <input className="p-3 rounded bg-gray-800" type="email" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
                 <input className="p-3 rounded bg-gray-800" type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
-                <button className="bg-red-600/80 py-3 rounded hover:bg-red-600 transition">Sign Up</button>
+                <button className="bg-red-600/80 py-3 rounded hover:bg-red-600 transition">Login</button>
                 <div className="flex justify-between items-center text-gray-600 text-sm">
                   <p><input type="checkbox" className="mr-2" checked={!rememberLogin} onChange={() => { setRememberLogin(!rememberLogin) }} />Remember me</p>
                   <p>Need Help?</p>
                 </div>
-                <p className="mt-4 text-md"><span className="text-gray-600">Already subscribed to Netflix?  </span><Link to='/login'>Sign In</Link></p>
+                <p className="mt-4 text-md"><span className="text-gray-600">New to Netflix?  </span><Link to='/signup'>Sign Up</Link></p>
               </form>
             </div>
           </div>
