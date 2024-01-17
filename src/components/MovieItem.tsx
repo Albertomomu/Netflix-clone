@@ -20,7 +20,7 @@ const MovieItem: React.FC<{ movie: Movie }> = ({ movie }) => {
       <div className='absolute top-0 left-0 w-full h-40 bg-black/80 opacity-0 hover:opacity-100 transition'>
         <p className='whitespace-normal text-xs md:text-sm flex justify-center items-center h-full font-nsans-bold'>{movie.title}</p>
 
-        <p>{like ? <FaHeart className="absolute top-2 left-2 text-gray-300" /> : <FaRegHeart className="absolute top-2 left-2 text-gray-300" />}</p>
+        <p onClick={() => setLike(!like)}>{like ? <FaHeart size={20} className="absolute top-2 left-2 text-gray-300" /> : <FaRegHeart size={20} className="absolute top-2 left-2 text-gray-300" />}</p>
       </div>
     </div>
   )
