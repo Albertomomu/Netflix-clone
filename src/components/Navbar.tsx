@@ -5,7 +5,7 @@ const Navbar = () => {
 
   const { user, logOut } = UserAuth();
   const navigate = useNavigate();
-
+  console.log(user)
   return (
     <div className='absolute w-full p-4 flex items-center justify-between z-50'>
       <Link to='/'>
@@ -17,7 +17,7 @@ const Navbar = () => {
             <button className='capitalize pr-4'>profile</button>
           </Link>
 
-          <button className='capitalize bg-red-600 px-6 py-2 rounded' onClick={logOut()}>logout</button>
+          <button className='capitalize bg-red-600 px-6 py-2 rounded' onClick={logOut}>logout</button>
         </div>
       ) : (
         <div>

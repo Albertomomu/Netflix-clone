@@ -13,7 +13,7 @@ const Login = () => {
   const handleForm = async (e: Event) => {
     e.preventDefault()
     try {
-      const user = await logIn(email, password)
+      await logIn(email, password)
       navigate('/')
     } catch (err) {
       console.log(err)
