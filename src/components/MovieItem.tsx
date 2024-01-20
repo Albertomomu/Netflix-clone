@@ -23,9 +23,13 @@ const MovieItem: React.FC<{ movie: Movie }> = ({ movie }) => {
 
     if (userEmail) {
       const userRef = doc(db, 'users', userEmail)
+      setLike(!like)
       await updateDoc(userRef, {
-        favShows: arrayUnion(movie.title)
+        favShows: arrayUnion({ ...movie })
       })
+    }
+    else {
+      alert("Please log in to mark a show as favorite")
     }
   }
 
@@ -40,7 +44,6 @@ const MovieItem: React.FC<{ movie: Movie }> = ({ movie }) => {
 
         <p
           onClick={() => {
-            setLike(!like);
             markFavShow();
           }}>{like ? <FaHeart size={20} className="absolute top-2 left-2 text-gray-300" /> : <FaRegHeart size={20} className="absolute top-2 left-2 text-gray-300" />}</p>
       </div>
