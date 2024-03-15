@@ -6,6 +6,14 @@ import { createImageUrl } from '../services/movieServices'
 import { arrayRemove, doc, onSnapshot, updateDoc } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
+interface Movie {
+  id: string;
+  backdrop_path: string | null;
+  poster_path: string | null;
+  title: string;
+}
+
+
 const Profile = () => {
   const [movies, setMovies] = useState([])
   const { user } = UserAuth();
@@ -23,12 +31,12 @@ const Profile = () => {
       <p>Fetching shows</p>
     )
   }
-  const slide = (offset) => {
+  const slide = (offset: number) => {
     const slider = document.getElementById('slider')
     slider.scrollLeft = slider?.scrollLeft + offset
   }
 
-  const handleUnlikeShow = async (movie) => {
+  const handleUnlikeShow = async (movie: Movie) => {
     const userDoc = doc(db, 'users', `${user.email}`)
     await updateDoc(userDoc, {
       favShows: arrayRemove(movie)
@@ -51,7 +59,7 @@ const Profile = () => {
       <div className='relative flex items-center group'>
         <MdChevronLeft onClick={() => { slide(-500) }} size={40} className='bg-white rounded-full absolute left-2 opacity-80 text-gray-700 z-10 hidden group-hover:block cursor-pointer' />
         <div id={`slider`} className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
-          {movies.map((movie) => (
+          {movies.map((movie: Movie) => (
             <>
               <div key={movie?.id} className='relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block rounded-lg overflow-hidden cursor-pointer m-2'>
                 <img className='w-full h-40 block object-cover object-top' src={createImageUrl(movie?.backdrop_path ?? movie?.poster_path, "w500")} alt={movie?.title} />
